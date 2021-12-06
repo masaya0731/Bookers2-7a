@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
   has_many :book_comments, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship", foreign_key: :followed_id
   has_many :followed, through: :active_relationships, source: :follower
